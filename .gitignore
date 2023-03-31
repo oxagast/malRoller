@@ -1,0 +1,7 @@
+*.exe
+build/
+dist/
+Include/
+Lib/
+python/
+Scripts/
