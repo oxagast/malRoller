@@ -1,4 +1,5 @@
 *.exe
+*.spec
 build/
 dist/
 Include/
