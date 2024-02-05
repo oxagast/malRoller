@@ -41,7 +41,7 @@ def check_autostart_registry(value_name):
         idx = 0
         while idx < 1_000:     # Max 1.000 values
             try:
-                key_name, _, _ = winreg.EnumValue(key, idx)dddd
+                key_name, _, _ = winreg.EnumValue(key, idx)
                 if key_name == value_name:
                     return True
                 idx += 1
