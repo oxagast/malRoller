@@ -6,9 +6,9 @@
 * Pick a payload, such as the rev_shell, and copy it to the repo root, renaming it payload.py.
 * Edit the src of the payload.py to reflect the host and port you want to connect back to.
 * Run the `build_script.bat` file.
-* Now should appear a new directory named .\repacked\ with a .exe file in it.
+* Now should appear a new directory named .\repacked\ with a .exe file in it (repacked.exe).
 * The file will be about 13mb to 15mb in size, plus however large the decoy.exe is.
-* Locally run `nc -l -p [port] -v`.
+* Locally run `nc -l -p [port] -v` (if using rev_shell).
 * Social engineer your victim into running the executable in the repacked dir.
 * Wait for shell!
 
@@ -21,4 +21,4 @@ I am not liable for your actions!
 
 # Authors
 
-oxagast - oxagast@oxasploits.com
+Marshall Whittaker - marshall@oxasploits.com
