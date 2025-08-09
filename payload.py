@@ -36,6 +36,6 @@ def shell():
 while 1:
     try:
         shell()
-        sleep(15)
+        sleep(30)
     except Exception as f:
         continue
